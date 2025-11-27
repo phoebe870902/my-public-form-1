@@ -16,9 +16,9 @@
                 400: '#769c8e', 500: '#568071', 600: '#426559', 700: '#365148', 
                 800: '#2d413b', 900: '#263732',
               },
-              // 由於原程式碼有用到 teal，我們也將其加入
+              // 確保有 teal 顏色，用於哈達瑜珈區塊
               teal: {
-                 50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 800: '#065f46',
+                 50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 600: '#0d9488', 700: '#0f766e', 800: '#065f46',
               }
             }
           }
@@ -26,9 +26,9 @@
       }
     </script>
 </head>
-<body class="bg-sage-50 text-sage-900 antialiased selection:bg-sage-200">
+<body class="min-h-screen bg-sage-50 text-sage-900 antialiased selection:bg-sage-200 font-sans">
     
-    <main class="min-h-screen flex flex-col max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-32">
         <div class="max-w-lg w-full mx-auto">
 
             <div class="bg-white rounded-xl shadow-lg border border-sage-100 overflow-hidden">
@@ -87,32 +87,18 @@
                     
                     <div>
                       <label for="name" class="block text-sm font-medium text-sage-700 mb-1">1. 學員姓名</label>
-                      <input
-                        type="text"
-                        required
-                        id="name"
-                        name="學員姓名"
-                        class="w-full px-4 py-2 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition"
-                        placeholder="請輸入您的真實姓名"
-                      />
+                      <input type="text" required id="name" name="學員姓名" class="w-full px-4 py-2 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition" placeholder="請輸入您的真實姓名" />
                     </div>
 
                     <div>
                       <label for="lineId" class="block text-sm font-medium text-sage-700 mb-1">2. Line ID</label>
-                      <input
-                        type="text"
-                        required
-                        id="lineId"
-                        name="Line ID"
-                        class="w-full px-4 py-2 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition"
-                        placeholder="方便聯絡課程異動"
-                      />
+                      <input type="text" required id="lineId" name="Line ID" class="w-full px-4 py-2 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition" placeholder="方便聯絡課程異動" />
                     </div>
 
                     <div>
-                      <label for="courseSelection" class="block text-sm font-medium text-sage-700 mb-2">3. 選擇課程時間 (請手動填寫課程名稱與日期)</label>
+                      <label class="block text-sm font-medium text-sage-700 mb-2">3. 選擇課程時間 (可複選)</label>
                       
-                      <div class="space-y-6 mb-6">
+                      <div class="space-y-6">
                             
                             <div class="bg-white border border-sage-200 rounded-xl shadow-sm overflow-hidden">
                                <div class="bg-sage-50 px-5 py-4 border-b border-sage-100">
@@ -122,9 +108,26 @@
                                   </h3>
                                   <p class="text-xs text-sage-500 mt-1 ml-11">週五上午 • 教室二</p>
                                </div>
-                               <div class="p-4 text-sm text-sage-700">
-                                  請在下方文本框中填寫具體日期和時間。
-                               </div>
+                               <div class="p-4 space-y-3">
+                                  <label class="flex items-center p-3 rounded-lg border border-sage-100 cursor-pointer hover:border-sage-300 hover:bg-white transition-all">
+                                      <input type="checkbox" name="課程選擇[]" value="修復陰瑜伽 - 週五 12/6 10:00" class="w-5 h-5 text-sage-600 rounded focus:ring-sage-500 border-gray-300" />
+                                      <div class="ml-3 flex-1">
+                                          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+                                              <span class="font-medium text-base text-sage-700">12/6 (週五)</span>
+                                              <span class="text-xs text-sage-500 bg-white px-2 py-0.5 rounded border border-sage-100 self-start sm:self-auto">10:00 - 11:30</span>
+                                          </div>
+                                      </div>
+                                  </label>
+                                  <label class="flex items-center p-3 rounded-lg border border-sage-100 cursor-pointer hover:border-sage-300 hover:bg-white transition-all">
+                                      <input type="checkbox" name="課程選擇[]" value="修復陰瑜伽 - 週五 12/13 10:00" class="w-5 h-5 text-sage-600 rounded focus:ring-sage-500 border-gray-300" />
+                                      <div class="ml-3 flex-1">
+                                          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+                                              <span class="font-medium text-base text-sage-700">12/13 (週五)</span>
+                                              <span class="text-xs text-sage-500 bg-white px-2 py-0.5 rounded border border-sage-100 self-start sm:self-auto">10:00 - 11:30</span>
+                                          </div>
+                                      </div>
+                                  </label>
+                                  </div>
                             </div>
 
                             <div class="bg-white border border-sage-200 rounded-xl shadow-sm overflow-hidden">
@@ -135,20 +138,28 @@
                                   </h3>
                                   <p class="text-xs text-teal-600 mt-1 ml-11">週一/週三晚間 • 週四上午</p>
                                </div>
-                               <div class="p-4 text-sm text-sage-700">
-                                  請在下方文本框中填寫具體日期和時間。
+                               <div class="p-4 space-y-3">
+                                   <label class="flex items-center p-3 rounded-lg border border-sage-100 cursor-pointer hover:border-sage-300 hover:bg-white transition-all">
+                                       <input type="checkbox" name="課程選擇[]" value="哈達瑜珈 - 週一 12/9 19:30" class="w-5 h-5 text-sage-600 rounded focus:ring-sage-500 border-gray-300" />
+                                       <div class="ml-3 flex-1">
+                                           <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+                                               <span class="font-medium text-base text-sage-700">12/9 (週一)</span>
+                                               <span class="text-xs text-sage-500 bg-white px-2 py-0.5 rounded border border-sage-100 self-start sm:self-auto">19:30 - 21:00</span>
+                                           </div>
+                                       </div>
+                                   </label>
+                                   <label class="flex items-center p-3 rounded-lg border border-sage-100 cursor-pointer hover:border-sage-300 hover:bg-white transition-all">
+                                       <input type="checkbox" name="課程選擇[]" value="哈達瑜珈 - 週三 12/11 19:30" class="w-5 h-5 text-sage-600 rounded focus:ring-sage-500 border-gray-300" />
+                                       <div class="ml-3 flex-1">
+                                           <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+                                               <span class="font-medium text-base text-sage-700">12/11 (週三)</span>
+                                               <span class="text-xs text-sage-500 bg-white px-2 py-0.5 rounded border border-sage-100 self-start sm:self-auto">19:30 - 21:00</span>
+                                           </div>
+                                       </div>
+                                   </label>
                                </div>
                             </div>
                       </div>
-
-                      <textarea 
-                          id="courseSelection" 
-                          name="課程選擇" 
-                          rows="4"
-                          required
-                          class="w-full px-4 py-2 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition"
-                          placeholder="請輸入您選擇的課程，例如：修復陰瑜伽 12/26(五) 10:00，哈達瑜珈 12/29(一) 19:30"
-                      ></textarea>
                       
                     </div>
 
@@ -179,11 +190,11 @@
                             <label class="text-sm font-medium text-sage-800">4. 學員是否已經付款？</label>
                             <div class="flex items-center space-x-6">
                                 <label class="inline-flex items-center cursor-pointer p-1">
-                                    <input type="radio" class="w-5 h-5 text-sage-600 focus:ring-sage-500 border-gray-300" name="是否付款" value="未付款" checked>
+                                    <input type="radio" name="是否付款" value="未付款" checked>
                                     <span class="ml-2 text-sm text-sage-700">未付款</span>
                                 </label>
                                 <label class="inline-flex items-center cursor-pointer p-1">
-                                    <input type="radio" class="w-5 h-5 text-sage-600 focus:ring-sage-500 border-gray-300" name="是否付款" value="已付款">
+                                    <input type="radio" name="是否付款" value="已付款">
                                     <span class="ml-2 text-sm text-sage-700">已付款</span>
                                 </label>
                             </div>
@@ -191,24 +202,12 @@
 
                         <div>
                              <label for="paymentLast5" class="block text-sm font-medium text-sage-800 mb-1">5. 付款後五碼 (若已付款，請填寫)</label>
-                             <input
-                                required
-                                id="paymentLast5"
-                                type="text"
-                                maxlength="5"
-                                pattern="\d{5}"
-                                name="付款後五碼"
-                                class="w-full px-4 py-3 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition bg-white text-base tracking-widest"
-                                placeholder="請輸入匯款帳號後5碼"
-                            />
+                             <input required id="paymentLast5" type="text" maxlength="5" pattern="\d{5}" name="付款後五碼" class="w-full px-4 py-3 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition bg-white text-base tracking-widest" placeholder="請輸入匯款帳號後5碼"/>
                             <p class="text-xs text-sage-500 mt-1">若選擇未付款，此欄位請填寫「未付款」。</p>
                         </div>
                     </div>
 
-                    <button
-                      type="submit"
-                      class="w-full bg-sage-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-sage-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage-500 transition-colors shadow-md text-xl flex justify-center items-center"
-                    >
+                    <button type="submit" id="submitButton" class="w-full bg-sage-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-sage-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage-500 transition-colors shadow-md text-xl flex justify-center items-center">
                       確認報名
                     </button>
 
