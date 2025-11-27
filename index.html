@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>活動報名表單</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sophie Yoga Registration</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* 您可以將 Vibe Coding 的客製化 CSS 放在這裡 */
-    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sage: {
+                50: '#f4f7f5',
+                100: '#e3ebe6',
+                200: '#c5d9ce',
+                300: '#9dbcae',
+                400: '#769c8e',
+                500: '#568071',
+                600: '#426559',
+                700: '#365148',
+                800: '#2d413b',
+                900: '#263732',
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
 </head>
-<body class="bg-gray-100 p-8">
-    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-6 text-center">活動報名表</h2>
-
-        <form id="registrationForm" onsubmit="handleFormSubmit(event)">
-            <div class="mb-4">
-                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">姓名:</label>
-                <input type="text" id="name" name="姓名" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-            </div>
-            
-            <div class="mb-4">
-                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">電子郵件:</label>
-                <input type="email" id="email" name="電子郵件" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-            </div>
-
-            <div class="mb-6">
-                <label for="message" class="block text-gray-700 text-sm font-bold mb-2">備註/留言:</label>
-                <textarea id="message" name="備註" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-            </div>
-            
-            <div class="flex items-center justify-between">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    提交報名
-                </button>
-            </div>
-
-            <p id="resultMessage" class="mt-4 text-center hidden"></p>
-        </form>
-    </div>
-
-    <script src="script.js"></script>
-</body>
+  <body class="bg-sage-50 text-sage-900 antialiased selection:bg-sage-200">
+    <div id="root"></div>
+  </body>
 </html>
