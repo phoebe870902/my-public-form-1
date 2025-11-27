@@ -3,220 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sophie Yoga Registration</title>
+    <title>Sophie's Yoga Registration</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      // 您的自定義 Sage 顏色配置
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               sage: {
-                50: '#f4f7f5', 100: '#e3ebe6', 200: '#c5d9ce', 300: '#9dbcae', 
-                400: '#769c8e', 500: '#568071', 600: '#426559', 700: '#365148', 
-                800: '#2d413b', 900: '#263732',
-              },
-              // 確保有 teal 顏色，用於哈達瑜珈區塊
-              teal: {
-                 50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 600: '#0d9488', 700: '#0f766e', 800: '#065f46',
+                50: '#f4f7f5',
+                100: '#e3ebe6',
+                200: '#c5d9ce',
+                300: '#9dbcae',
+                400: '#769c8e',
+                500: '#568071',
+                600: '#426559',
+                700: '#365148',
+                800: '#2d413b',
+                900: '#263732',
               }
             }
           }
         }
       }
     </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
 </head>
-<body class="min-h-screen bg-sage-50 text-sage-900 antialiased selection:bg-sage-200 font-sans">
-    
-    <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-32">
-        <div class="max-w-lg w-full mx-auto">
-
-            <div class="bg-white rounded-xl shadow-lg border border-sage-100 overflow-hidden">
-                
-                <div class="bg-sage-600 p-6 text-white">
-                    <h2 class="text-2xl font-serif font-bold">Sophie 老師課程報名</h2>
-                    <div class="mt-4 space-y-3 text-sm text-sage-50">
-                      
-                      <div class="flex items-start">
-                        <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        <div>
-                          <strong class="block text-white">上課教室</strong>
-                          辛亥路四段 199 號興昌里區民活動中心 2F
-                          <div class="opacity-80 text-xs mt-0.5">(辛亥捷運站對面，走路三分鐘內)</div>
-                        </div>
-                      </div>
-
-                      <div class="flex items-start">
-                         <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                         <div>
-                           <strong class="block text-white">開課規則</strong>
-                           六人以上開課 (教室一：8人滿班, 教室二：16人滿班)
-                         </div>
-                      </div>
-
-                      <div class="flex items-start">
-                        <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        <div>
-                          <strong class="block text-white">補課機制</strong>
-                          <div class="whitespace-pre-line leading-relaxed opacity-95">
-                            若您因故請假，可於本月堂課期間內完成補課。請於課前透過 Line 告知，將協助安排補課時段 (彈性安排，依照教室與學員狀況調整)。
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="my-2 border-t border-sage-500 opacity-50"></div>
-
-                      <div class="flex items-start text-green-50 pt-1">
-                         <svg class="w-5 h-5 mr-2 mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 0C5.4 0 .04 5.36.04 12S5.4 24 12.04 24c6.59 0 12-5.36 12-12S18.63 0 12.04 0zm0 22c-5.52 0-10-4.48-10-10S6.52 2 12.04 2s10 4.48 10 10-4.48 10-10 10zm4.4-10.4L10 16.2l-3.4-3.4 1.4-1.4 2 2 4.4-4.4 2 1.4z" fillRule="evenodd" clipRule="evenodd"/></svg>
-                         <div class="flex-1">
-                             <strong class="block text-white mb-1">課程諮詢或報名聯繫方式</strong>
-                             <div class="flex items-center gap-2 mb-1">
-                                 <span id="lineIdToCopy" class="font-mono text-lg font-bold text-white tracking-wide">@tungmei0902</span>
-                                 <button id="copyLineIdButton" type="button" class="inline-flex items-center space-x-1 px-2 py-1 rounded text-xs font-medium bg-sage-700 text-green-100 hover:bg-sage-800 transition-colors">
-                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
-                                     <span id="copyLineIdLabel">複製</span>
-                                 </button>
-                             </div>
-                             <div class="text-xs opacity-90">任何課程相關問題 歡迎加line與我聊聊 ：）</div>
-                         </div>
-                      </div>
-                    </div>
-                </div>
-                
-                <form id="registrationForm" onsubmit="handleFormSubmit(event)" class="p-6 space-y-6">
-                    
-                    <div>
-                      <label for="name" class="block text-sm font-medium text-sage-700 mb-1">1. 學員姓名</label>
-                      <input type="text" required id="name" name="學員姓名" class="w-full px-4 py-2 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition" placeholder="請輸入您的真實姓名" />
-                    </div>
-
-                    <div>
-                      <label for="lineId" class="block text-sm font-medium text-sage-700 mb-1">2. Line ID</label>
-                      <input type="text" required id="lineId" name="Line ID" class="w-full px-4 py-2 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition" placeholder="方便聯絡課程異動" />
-                    </div>
-
-                    <div>
-                      <label class="block text-sm font-medium text-sage-700 mb-2">3. 選擇課程時間 (可複選)</label>
-                      
-                      <div class="space-y-6">
-                            
-                            <div class="bg-white border border-sage-200 rounded-xl shadow-sm overflow-hidden">
-                               <div class="bg-sage-50 px-5 py-4 border-b border-sage-100">
-                                  <h3 class="flex items-center text-lg font-bold text-sage-800">
-                                     <span class="flex items-center justify-center w-8 h-8 bg-sage-200 text-sage-700 rounded-full mr-3 text-sm">陰</span>
-                                     修復陰瑜伽
-                                  </h3>
-                                  <p class="text-xs text-sage-500 mt-1 ml-11">週五上午 • 教室二</p>
-                               </div>
-                               <div class="p-4 space-y-3">
-                                  <label class="flex items-center p-3 rounded-lg border border-sage-100 cursor-pointer hover:border-sage-300 hover:bg-white transition-all">
-                                      <input type="checkbox" name="課程選擇[]" value="修復陰瑜伽 - 週五 12/6 10:00" class="w-5 h-5 text-sage-600 rounded focus:ring-sage-500 border-gray-300" />
-                                      <div class="ml-3 flex-1">
-                                          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
-                                              <span class="font-medium text-base text-sage-700">12/6 (週五)</span>
-                                              <span class="text-xs text-sage-500 bg-white px-2 py-0.5 rounded border border-sage-100 self-start sm:self-auto">10:00 - 11:30</span>
-                                          </div>
-                                      </div>
-                                  </label>
-                                  <label class="flex items-center p-3 rounded-lg border border-sage-100 cursor-pointer hover:border-sage-300 hover:bg-white transition-all">
-                                      <input type="checkbox" name="課程選擇[]" value="修復陰瑜伽 - 週五 12/13 10:00" class="w-5 h-5 text-sage-600 rounded focus:ring-sage-500 border-gray-300" />
-                                      <div class="ml-3 flex-1">
-                                          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
-                                              <span class="font-medium text-base text-sage-700">12/13 (週五)</span>
-                                              <span class="text-xs text-sage-500 bg-white px-2 py-0.5 rounded border border-sage-100 self-start sm:self-auto">10:00 - 11:30</span>
-                                          </div>
-                                      </div>
-                                  </label>
-                                  </div>
-                            </div>
-
-                            <div class="bg-white border border-sage-200 rounded-xl shadow-sm overflow-hidden">
-                               <div class="bg-teal-50 px-5 py-4 border-b border-teal-100">
-                                  <h3 class="flex items-center text-lg font-bold text-teal-800">
-                                     <span class="flex items-center justify-center w-8 h-8 bg-teal-100 text-teal-700 rounded-full mr-3 text-sm">哈</span>
-                                     哈達瑜珈
-                                  </h3>
-                                  <p class="text-xs text-teal-600 mt-1 ml-11">週一/週三晚間 • 週四上午</p>
-                               </div>
-                               <div class="p-4 space-y-3">
-                                   <label class="flex items-center p-3 rounded-lg border border-sage-100 cursor-pointer hover:border-sage-300 hover:bg-white transition-all">
-                                       <input type="checkbox" name="課程選擇[]" value="哈達瑜珈 - 週一 12/9 19:30" class="w-5 h-5 text-sage-600 rounded focus:ring-sage-500 border-gray-300" />
-                                       <div class="ml-3 flex-1">
-                                           <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
-                                               <span class="font-medium text-base text-sage-700">12/9 (週一)</span>
-                                               <span class="text-xs text-sage-500 bg-white px-2 py-0.5 rounded border border-sage-100 self-start sm:self-auto">19:30 - 21:00</span>
-                                           </div>
-                                       </div>
-                                   </label>
-                                   <label class="flex items-center p-3 rounded-lg border border-sage-100 cursor-pointer hover:border-sage-300 hover:bg-white transition-all">
-                                       <input type="checkbox" name="課程選擇[]" value="哈達瑜珈 - 週三 12/11 19:30" class="w-5 h-5 text-sage-600 rounded focus:ring-sage-500 border-gray-300" />
-                                       <div class="ml-3 flex-1">
-                                           <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
-                                               <span class="font-medium text-base text-sage-700">12/11 (週三)</span>
-                                               <span class="text-xs text-sage-500 bg-white px-2 py-0.5 rounded border border-sage-100 self-start sm:self-auto">19:30 - 21:00</span>
-                                           </div>
-                                       </div>
-                                   </label>
-                               </div>
-                            </div>
-                      </div>
-                      
-                    </div>
-
-
-                    <div class="bg-sage-50 p-4 rounded-lg space-y-4 border border-sage-200">
-                        <div class="space-y-3 mb-4">
-                            <h4 class="font-bold text-sage-800 text-base">鐘點費支付方式 (每堂 $400)</h4>
-                            <div class="text-sm text-sage-700 space-y-3 bg-white p-4 rounded border border-sage-100">
-                                <div class="flex flex-col sm:flex-row sm:items-baseline gap-1">
-                                    <span class="font-bold text-sage-800 flex-shrink-0">1. 銀行匯款</span>
-                                      <div class="flex items-center gap-2 pl-4 sm:pl-0 flex-wrap">
-                                        <span class="font-mono text-sage-900 font-medium select-all text-base">銀行帳號: 0000-0000-0000</span>
-                                        <span class="text-sage-600">(戶名: 王小明)</span>
-                                        <button id="copyBankButton" type="button" class="inline-flex items-center space-x-1 px-2 py-1 rounded text-xs font-medium bg-sage-100 text-sage-600 hover:bg-sage-200 transition-colors">
-                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
-                                            <span id="copyBankLabel">複製</span>
-                                        </button>
-                                      </div>
-                                </div>
-                                <div class="flex flex-col sm:flex-row sm:items-baseline gap-1">
-                                    <span class="font-bold text-sage-800 flex-shrink-0">2. LinePay</span>
-                                    <a href="#" target="_blank" rel="noreferrer" class="pl-4 sm:pl-0 text-blue-600 underline truncate font-medium">LinePay 連結</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2 border-t border-sage-200">
-                            <label class="text-sm font-medium text-sage-800">4. 學員是否已經付款？</label>
-                            <div class="flex items-center space-x-6">
-                                <label class="inline-flex items-center cursor-pointer p-1">
-                                    <input type="radio" name="是否付款" value="未付款" checked>
-                                    <span class="ml-2 text-sm text-sage-700">未付款</span>
-                                </label>
-                                <label class="inline-flex items-center cursor-pointer p-1">
-                                    <input type="radio" name="是否付款" value="已付款">
-                                    <span class="ml-2 text-sm text-sage-700">已付款</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div>
-                             <label for="paymentLast5" class="block text-sm font-medium text-sage-800 mb-1">5. 付款後五碼 (若已付款，請填寫)</label>
-                             <input required id="paymentLast5" type="text" maxlength="5" pattern="\d{5}" name="付款後五碼" class="w-full px-4 py-3 border border-sage-200 rounded-lg focus:ring-2 focus:ring-sage-400 focus:border-transparent outline-none transition bg-white text-base tracking-widest" placeholder="請輸入匯款帳號後5碼"/>
-                            <p class="text-xs text-sage-500 mt-1">若選擇未付款，此欄位請填寫「未付款」。</p>
-                        </div>
-                    </div>
-
-                    <button type="submit" id="submitButton" class="w-full bg-sage-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-sage-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage-500 transition-colors shadow-md text-xl flex justify-center items-center">
-                      確認報名
-                    </button>
-
-                    <p id="resultMessage" class="mt-4 text-center hidden font-medium"></p>
-                </form>
-            </div>
-        </div>
-    </main>
-    
-    <script src="script.js"></script>
-</body>
+  <body class="bg-sage-50 text-sage-900 antialiased selection:bg-sage-200">
+    <div id="root"></div>
+  </body>
 </html>

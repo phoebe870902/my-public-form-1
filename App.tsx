@@ -99,7 +99,7 @@ const App: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center cursor-pointer" onClick={() => handleNavClick(ViewMode.STUDENT_FORM)}>
-              <span className="text-2xl font-serif text-sage-800 font-bold tracking-tight">Sophie Yoga</span>
+              <span className="text-2xl font-serif text-sage-800 font-bold tracking-tight">Sophie's Yoga</span>
             </div>
             <div className="flex items-center space-x-2">
               <button
@@ -149,7 +149,7 @@ const App: React.FC = () => {
       {/* Footer */}
       <footer className="bg-sage-100 mt-auto py-6">
         <div className="max-w-4xl mx-auto px-4 text-center text-sage-500 text-sm">
-          &copy; {new Date().getFullYear()} Sophie Yoga. Namaste.
+          &copy; {new Date().getFullYear()} Sophie's Yoga. Namaste.
         </div>
       </footer>
     </div>
