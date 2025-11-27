@@ -11,14 +11,14 @@ async function handleFormSubmit(event) {
     // 收集表單資料
     const formData = new FormData(form);
     const data = {};
+    // 確保這裡的 key (鍵名) 與 Apps Script 中的表頭 (姓名, 電子郵件, 備註) 完全一致
     formData.forEach((value, key) => {
-        // 將資料鍵值對儲存在物件中，鍵名會成為 Google Sheet 的欄位標題
         data[key] = value;
     });
 
     // 顯示載入狀態
     resultMessage.textContent = '正在提交...請稍候。';
-    resultMessage.className = 'mt-4 text-center text-blue-500 block';
+    resultMessage.className = 'mt-4 text-center text-sage-500 block font-medium'; // 使用您的 sage 顏色
 
     try {
         // 使用 fetch 將資料以 POST 請求發送到 Apps Script
@@ -33,16 +33,18 @@ async function handleFormSubmit(event) {
         // 檢查 HTTP 狀態碼
         if (response.ok) {
             resultMessage.textContent = '✅ 報名成功！資料已累積。';
-            resultMessage.className = 'mt-4 text-center text-green-600 block';
+            resultMessage.className = 'mt-4 text-center text-green-600 block font-medium';
             form.reset(); // 清空表單
         } else {
-            resultMessage.textContent = '❌ 提交失敗！請檢查 Apps Script 設定或稍後再試。';
-            resultMessage.className = 'mt-4 text-center text-red-600 block';
+            // 讀取 Apps Script 返回的錯誤訊息
+            const errorText = await response.text(); 
+            resultMessage.textContent = `❌ 提交失敗！伺服器錯誤: ${errorText.substring(0, 50)}...`;
+            resultMessage.className = 'mt-4 text-center text-red-600 block font-medium';
         }
 
     } catch (error) {
         console.error('Fetch 錯誤:', error);
-        resultMessage.textContent = '❌ 提交失敗！網路或伺服器錯誤。';
-        resultMessage.className = 'mt-4 text-center text-red-600 block';
+        resultMessage.textContent = '❌ 提交失敗！網路錯誤，請檢查連線。';
+        resultMessage.className = 'mt-4 text-center text-red-600 block font-medium';
     }
 }
